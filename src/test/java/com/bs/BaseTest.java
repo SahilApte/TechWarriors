@@ -8,7 +8,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
-
+import org.testng.annotations.AfterMethod;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -68,6 +68,13 @@ public class BaseTest {
             HashMap<String, Object> bstackOptions = (HashMap<String, Object>) capabilities.getCapability("bstack:options");
             bstackOptions.put("os", os);
             bstackOptions.put("osVersion", osVersion);
+        }
+    }
+
+    @AfterMethod
+    public void tearDown() {
+        if (driver != null) {
+            driver.quit();
         }
     }
 

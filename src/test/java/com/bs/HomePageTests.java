@@ -20,7 +20,7 @@ public class HomePageTests extends BaseTest {
     @Test
     public void endToEndFLow() {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        voidLogin();
+        login();
         addToCartAndCheckout();
         enterShippingDetails();
         String msg = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[normalize-space()='Your Order has been successfully placed.']"))).getText();
@@ -33,7 +33,7 @@ public class HomePageTests extends BaseTest {
     @Test
     public void validateShippingDetailsMandatoryFields() {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        voidLogin();
+        login();
         addToCartAndCheckout();
         type(By.xpath("//input[@id='firstNameInput']"), generateRandomString());
         type(By.xpath("//input[@id='lastNameInput']"), generateRandomString());
@@ -45,9 +45,8 @@ public class HomePageTests extends BaseTest {
 
     /* Helper methods*/
 
-    public void voidLogin() {
+    public void login() {
         try {
-            driver.get("https://testathon.live/");
             clickOnElement(By.xpath("//a[@id='Sign In']"));
             clickOnElement(By.id("username"));
             Actions actions = new Actions(driver);

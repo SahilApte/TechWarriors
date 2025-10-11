@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite" thread-count="10">
+
+    <test verbose="2" preserve-order="true" name="ChromeTest">
+        <parameter name="browser" value="chrome_win11"/>
+        <parameter name="os" value="windows"/>
+        <classes>
+<!--            <class name="com.bs.HackathonTests"/>-->
+            <class name="com.bs.HomePageTests"></class>
+        </classes>
+    </test>
+
+   <!-- <test verbose="2" preserve-order="true" name="FirefoxTest">
+        <parameter name="browser" value="firefox"/>
+        <parameter name="os" value="windows"/>
+        <classes>
+            <class name="com.bs.HackathonTests"/>
+        </classes>
+    </test>
+
+       <test verbose="2" preserve-order="true" name="EdgeTest">
+           <parameter name="browser" value="edge"/>
+           <parameter name="os" value="windows"/>
+           <classes>
+               <class name="com.bs.HackathonTests"/>
+           </classes>
+       </test>
+
+       <test verbose="2" preserve-order="true" name="SafariTest">
+           <parameter name="browser" value="safari_sonoma"/>
+           <parameter name="os" value="mac"/>
+           <classes>
+               <class name="com.bs.HackathonTests"/>
+           </classes>
+       </test>-->
+</suite>

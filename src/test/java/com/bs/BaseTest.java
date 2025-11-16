@@ -22,8 +22,8 @@ public class BaseTest {
     @BeforeMethod
     public void setBrowser(String browser, String os, Method method) throws MalformedURLException {
         HashMap<String, Object> bstackOptions = new HashMap<>();
-        bstackOptions.put("userName", "sahilapte_OMqrZC");
-        bstackOptions.put("accessKey", "igLPiBhTTZUQL9VBnxtp");
+        bstackOptions.put("userName", System.getenv("BROWSERSTACK_USERNAME"));
+        bstackOptions.put("accessKey", System.getenv("BROWSERSTACK_ACCESS_KEY"));
 //        bstackOptions.put("geoLocation", "IN");
         bstackOptions.put("projectName", "Testathon Demo 5");
         bstackOptions.put("buildName", "Sauce Demo v2");
@@ -55,7 +55,10 @@ public class BaseTest {
         }
 
         //driver = new ChromeDriver();
-        driver = new RemoteWebDriver(new URL("https://sahilapte_OMqrZC:igLPiBhTTZUQL9VBnxtp@hub.browserstack.com/wd/hub"), capabilities);
+        
+        String username = System.getenv("BROWSERSTACK_USERNAME");
+        String accessKey = System.getenv("BROWSERSTACK_ACCESS_KEY");
+        driver = new RemoteWebDriver(new URL("https://" + username + ":" + accessKey + "@hub.browserstack.com/wd/hub"), capabilities);
         driver.get("https://testathon.live/");
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
